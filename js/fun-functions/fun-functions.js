@@ -59,4 +59,4 @@ var whiteOut = function setInvertedColors() {
         e[i].style.backgroundColor = '#'+Math.abs(16777215).toString(16);
         e[i].style.color = '#'+Math.abs(16777215).toString(16);
     }
-
+}
