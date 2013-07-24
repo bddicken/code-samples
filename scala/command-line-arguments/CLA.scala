@@ -1,26 +1,31 @@
 /**
  * Program to test command line argument parsing.
+ *
+ * Accepts arguments:
+ *      (-v || --verbose) 
+ *      (-h || --help) 
  */
-object CLA {
+object CLA extends App  {
 
-    String varbose = "none";
-
-    def main (args: Array[String]) = {
-        parseArgs(args);
-    }
-
-    def parseArg (arguments: Array[String]) {
+    var verbose = "none"
+    var help = "none"
+    
+    def parseArgs (arguments: Array[String]) = {
         
-        int index = 0;
-        
-        for(String a <- arguments) {
+        for(i <- 0 until arguments.length) {
             
-            if(argument == "--verbose" || argument == "-v") {
-                verbose = arguments[++index];
-                println("VERBOSE: " + verbose);
+            if(arguments(i) == "--verbose" || arguments(i) == "-v") {
+                verbose = arguments(i=i+1)
+                println("VERBOSE: " + verbose)
             }
-
-            ++index;
+            
+            if(arguments(i) == "--help" || arguments(i) == "-h") {
+                help = arguments(i=i+1)
+                println("HELP: " + help)
+            }
+        
         }
     }
+
+    parseArgs(args)
 }
