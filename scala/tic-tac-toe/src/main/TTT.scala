@@ -18,22 +18,26 @@ object TTT extends App {
            
         var read = true
         
-        var xs = ""
-        var ys = ""
         var x = 0
         var y = 0
 
-        println(p.name + ", it's your turn!")
+        println(p.name + ", it's your turn, time to make your move.")
     
         while(read) {
 
-            print("x: ")
-            x = readLine().toInt
+            try {
+                print("x position: ")
+                x = readLine().toInt
             
-            print("y: ")
-            x = readLine().toInt
+                print("y position: ")
+                y = readLine().toInt
+            } catch {
+                case ex:Exception => {
+                    println("Invalid move, try again!")
+                }
+            }
 
-            var move =  board.placeSymbol(p.symbol, x, y)
+            var move = board.placeSymbol(p.symbol, x, y)
 
             if(move == false) 
                 println("Invalid move, try again!")
@@ -43,14 +47,20 @@ object TTT extends App {
     }
 
     def playGame () = {
+
+        println("\nWelcome to Tic-Tac-Toe!")
+
         var play = true
 
         while(play) {
             makeMove(cp)
-            board.printBoard()
             
-            if(board.isOver())
-                printf("\nplayer " + cp.name + " won!\n")   
+            board.printBoard() 
+
+            if(board.isOver) {
+                println("\nplayer " + cp.name + " wins!\n")
+                play = false
+            }
 
             if(cp == px) cp = py
             else cp = px

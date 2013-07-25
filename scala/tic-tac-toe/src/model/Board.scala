@@ -5,7 +5,7 @@ package model
  */
 class Board () {
    
-    var board = Array(Array("", "", ""), Array("", "", ""), Array("", "", ""))
+    var board = Array(Array(" ", " ", " "), Array(" ", " ", " "), Array(" ", " ", " "))
    
     /**
      * Determine if the game is over
@@ -30,14 +30,14 @@ class Board () {
         // Negative Diagonal
         if( (board(0)(0) == board(1)(1)) &&
             (board(1)(1) == board(2)(2)) &&
-            (board(0)(0) != " ") ) {
+            (board(1)(1) != " ") ) {
             return true;
         }
 
         // Positive Diagonal
-        if( (board(0)(3) == board(1)(1)) &&
+        if( (board(0)(2) == board(1)(1)) &&
             (board(1)(1) == board(2)(0)) &&
-            (board(0)(0) != " ") ) {
+            (board(1)(1) != " ") ) {
             return true;
         }
 
@@ -62,11 +62,13 @@ class Board () {
      * Print the game board.
      */
     def printBoard () = {
+        println("")
         for (i <- 0 until 3) {
             println("|" + board(i)(0) + "|" + board(i)(1) + "|" + board(i)(2) + "|")
             if(i != 2)
                 println("-------")
         }
+        println("")
     }
 
 }
