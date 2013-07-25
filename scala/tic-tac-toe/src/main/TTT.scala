@@ -46,7 +46,11 @@ object TTT extends App {
         var play = true
 
         while(play) {
-            makeMove(cp)     
+            makeMove(cp)
+            board.printBoard()
+            
+            if(board.isOver())
+                printf("\nplayer " + cp.name + " won!\n")   
 
             if(cp == px) cp = py
             else cp = px
