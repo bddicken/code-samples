@@ -1,35 +1,11 @@
 
-package model
+package main
 
 import scala.actors.Actor
 import scala.actors.Actor._
 
-object CommLevel extends Enumeration {
-    type CommLevel = Value
-    val whisper, speak, shout = Value
-}
-
-import CommLevel._
-
-class Shouter(cl: CommLevel, message: String, ms:Int) extends Actor {
-    
-    def act() {
-
-        Thread.sleep(ms)
-
-        var msg = "\n\n" + message + "\n\n"
-
-        if(cl == shout)
-            println(msg.toUpperCase)
-        else if(cl == whisper)
-            println(msg.toLowerCase)
-        else
-            println(msg)
-
-        exit()
-    }
-
-}
+import model._
+import model.CommLevel._
 
 object Main extends App {
         
@@ -44,6 +20,8 @@ object Main extends App {
     }
     
     def makeMove () = {
+
+        println("Go ahead, send a message!")
            
         var read = true
 
@@ -78,7 +56,6 @@ object Main extends App {
 
         }
     }
-
 
     def begin () = {
         while(true) {
