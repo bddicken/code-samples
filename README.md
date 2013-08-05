@@ -1,4 +1,4 @@
 code-samples
 ============
 
-Sample programs for various languages
+Sample programs and functions for various languages
