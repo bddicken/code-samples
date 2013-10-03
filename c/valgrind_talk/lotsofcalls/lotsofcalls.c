@@ -20,19 +20,20 @@ bool one ()
 
 bool two ()
 {
-    if(live())
-        domorestuff();
+    domorestuff();
     return three() | four();
 }
 
 bool three ()
 {
+    domorestuff();
     return four();
 }
 
 bool four ()
 {
-    return live() | domorestuff() | 
+    domorestuff();
+    return live();
 }
 
 bool die ()
