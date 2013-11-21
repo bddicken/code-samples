@@ -1,5 +1,5 @@
 all:
-	gcc -o test test.c
+	gcc -freorder-blocks -O2 -o test test.c
 
 clean:
 	rm test

@@ -6,8 +6,8 @@
 #define likely(x)       __builtin_expect(!!(x), 1)
 #define unlikely(x)     __builtin_expect(!!(x), 0)
 #else
-#define likely(x)       (x)
-#define unlikely(x)     (x)
+//#define likely(x)       (x)
+//#define unlikely(x)     (x)
 #endif
 
 long LOOPS;
@@ -20,10 +20,15 @@ void likely_loop ()
     printf("running likely loop\n");
     for(i=0; i < LOOPS; i++)
     {
-        if(likely(i != value)) {
+        if(i == 7) {
+            value--;
+        } else if(i == 100) {
+            value--;
+        } else if(likely(i != value)) {
             value--;
         }
     }
+    printf("value: %d\n", value);
 }
 
 void unlikely_loop ()
@@ -31,10 +36,15 @@ void unlikely_loop ()
     printf("running unlikely loop\n");
     for(i=0; i < LOOPS; i++)
     {
-        if(unlikely(i != value)) {
+        if(i == 7) {
+            value--;
+        } else if(i == 100) {
+            value--;
+        } else if(unlikely(i != value)) {
             value--;
         }
     }
+    printf("value: %d\n", value);
 }
 
 void normal_loop ()
@@ -42,16 +52,21 @@ void normal_loop ()
     printf("running normal loop\n");
     for(i=0; i < LOOPS; i++)
     {
-        if(i != value) {
+        if(i == 7) {
+            value--;
+        } else if(i == 100) {
+            value--;
+        } else if(i != value) {
             value--;
         }
     }
+    printf("value: %d\n", value);
 }
 
 int main (int argc, char** argv)
 {
     if (argc < 3) {
-        printf("usage: ./test [likely, unlikely, none] [iterations]\n");
+        printf("usage: ./test [likely, unlikely, normal] [iterations]\n");
         exit(EXIT_FAILURE);
     }
     
